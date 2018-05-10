@@ -6,7 +6,7 @@ export default function TodoItem(props) {
       <input type='radio' checked={props.checked} />
       <p className='item'>{props.value}</p>
       <button type='button' className='todo-delete'>
-        &dash;</button>
+        &mdash;</button>
     </div>
   )
 }
