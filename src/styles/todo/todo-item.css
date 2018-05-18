@@ -1,0 +1,35 @@
+.todo-item {
+  display: grid;
+  grid-template-columns: 8fr 2fr;
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+  height: 60px;
+}
+
+.item {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.checkbox {
+  margin-left: 10px;
+}
+
+.todo-edit,
+.todo-delete {
+  float: right;
+  border: none;
+  background-color: none;
+  font-size: 30px;
+  padding: 10px;
+  color: grey;
+  height: 100%;
+}
+
+.todo-edit:hover,
+.todo-delete:hover {
+  background: lightgrey;
+  color: black;
+  cursor: pointer;
+}

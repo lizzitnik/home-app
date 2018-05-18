@@ -2,6 +2,8 @@ import React from 'react'
 
 import DailyCard from './daily-weather-card'
 
+import '../../styles/weather/weather-card.css'
+
 export default class Daily extends React.Component {
   constructor(props) {
     super(props);
@@ -24,6 +26,12 @@ export default class Daily extends React.Component {
         max: '68',
         min: '32',
         condition: 'partly-sunny'
+      }, {
+        day: 'Friday',
+        avg: '60',
+        max: '70',
+        min: '50',
+        condition: 'sunny'
       }]
     }
   }
@@ -34,7 +42,7 @@ export default class Daily extends React.Component {
       </div>
     )
     return (
-      <div className='daily-weather'>
+      <div className='weather daily-weather'>
         {dailies}
       </div>
     )

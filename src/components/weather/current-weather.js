@@ -1,14 +1,28 @@
-import React from 'react'
+import React from 'react';
 
-export default function Current(props) {
-  return (
-    <div className='current-weather'>
-      <div className='current-day'>{props.day}</div>
-      <div className='current-temp'>
-        <span className='temp'>{props.temp}</span>
+import CurrentCard from './current-weather-card'
+
+import '../../styles/weather/weather-card.css'
+
+export default class Current extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      current: {
+        day: 'Monday',
+        temp: '65',
+        max: '78',
+        min: '58',
+        condition: 'sunny'
+      }
+    }
+  }
+  render() {
+    const current = this.state.current
+    return (
+      <div className='weather current-weather'>
+        <CurrentCard {...current} />
       </div>
-      <div className='current-min-max'>{props.max}&deg; | {props.min}&deg;</div>
-      <div className='current-condition'>{props.condition}</div>
-    </div>
-  )
+    )
+  }
 }

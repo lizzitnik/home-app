@@ -1,12 +1,19 @@
 import React from 'react'
 
+import '../../styles/todo/todo-item.css'
+
 export default function TodoItem(props) {
   return (
     <div className='todo-item'>
-      <input type='radio' checked={props.checked} />
-      <p className='item'>{props.value}</p>
-      <button type='button' className='todo-delete'>
-        &mdash;</button>
+      <label className='item'>
+        <input className='checkbox' type='checkbox' checked={props.checked} />
+        <span></span>
+        {props.value}
+      </label>
+      <div className='todo-buttons'>
+        <button type='button' className='todo-delete'>&mdash;</button>
+        <button type='button' className='todo-edit'>Edit</button>
+      </div>
     </div>
   )
 }

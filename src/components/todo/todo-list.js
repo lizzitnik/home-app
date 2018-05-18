@@ -2,32 +2,41 @@ import React from 'react'
 
 import TodoItem from './todo-item'
 
+import '../../styles/todo/todo-list.css'
+
 export default class TodoList extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      items: [{
+      todos: [{
         value: 'Clean the gutters',
-        checked: true
+        completed: false
       }, {
         value: 'Water the plants',
-        checked: false
+        completed: false
       }, {
         value: 'Feed the dog',
-        checked: false
+        completed: false
       }]
     }
   }
+
+  addTodo(todo) {
+    this.setState({
+      todos: [...this.state.todos, {todo}]
+    })
+  }
+  
   render() {
-    const items = this.state.items.map((item, index) =>
+    const todos = this.state.todos.map((todo, index) =>
       <li key={index}>
-        <TodoItem {...item} />
+        <TodoItem {...todo} />
       </li>
     )
     return (
-      <div className='todo-list'>
-        <ul>
-          {items}
+      <div>
+        <ul className='todo-list'>
+          {todos}
         </ul>
       </div>
     )

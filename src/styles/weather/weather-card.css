@@ -1,0 +1,29 @@
+.daily-weather {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 5px;
+}
+
+.card {
+  text-align: center;
+  padding: 10px;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+.current-weather-card {
+  border-left: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
+}
+
+.current-temp {
+  border-radius: 50%;
+  padding: 78px;
+  border: 1px solid lightgrey;
+}
+
+.daily-avg {
+  border-radius: 50%;
+  padding: 78px;
+  border: 1px solid lightgrey;
+}
