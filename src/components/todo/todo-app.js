@@ -1,48 +1,41 @@
-import React from 'react';
+import React from "react"
 
-import { connect } from 'react-redux'
+import { connect } from "react-redux"
 
-import TodoList from './todo-list'
-import TodoForm from './todo-form'
+import TodoList from "./todo-list"
+import TodoForm from "./todo-form"
 
-import {addTodo, toggleTodo, removeTodo} from '../../actions/todo-actions'
+import { addTodo, toggleTodo, removeTodo } from "../../actions/todo-actions"
+import { getLatLng } from "../../actions/weather-actions"
 
-import '../../styles/todo/todo-app.css'
+import "../../styles/todo/todo-app.css"
 class Todo extends React.Component {
   constructor(props) {
     super(props)
-
-    // this.addTodo = this.addTodo.bind(this)
-    // this.toggleTodo = this.toggleTodo.bind(this)
-    // this.removeTodo = this.removeTodo.bind(this)
+    props.dispatch(getLatLng())
   }
 
-  addTodo = (value) => {
-    this.props.dispatch(
-      addTodo(value)
-    )
+  addTodo = value => {
+    this.props.dispatch(addTodo(value))
   }
 
-  toggleTodo = (index) => {
-    this.props.dispatch(
-      toggleTodo(index)
-    )
+  toggleTodo = index => {
+    this.props.dispatch(toggleTodo(index))
   }
 
-  removeTodo = (index) => {
-    this.props.dispatch(
-      removeTodo(index)
-    )
+  removeTodo = index => {
+    this.props.dispatch(removeTodo(index))
   }
 
   render() {
     return (
-      <div className='todo-app'>
+      <div className="todo-app">
         <TodoForm onAdd={this.addTodo} />
         <TodoList
           todos={this.props.todos}
           toggleTodo={this.toggleTodo}
-          removeTodo={this.removeTodo}/>
+          removeTodo={this.removeTodo}
+        />
       </div>
     )
   }
