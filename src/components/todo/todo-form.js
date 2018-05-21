@@ -1,5 +1,5 @@
 import React from 'react'
-//import * as actions from '../../actions'
+import * as actions from '../../actions/todo-actions'
 
 import '../../styles/todo/todo-form.css'
 
@@ -25,6 +25,11 @@ export default class TodoForm extends React.Component {
     this.clearInput();
   }
 
+  onChange = () => {
+    const value = this.textInput.value.trim()
+    this.setState({ value: value })
+  }
+
   render() {
     return (
       <div className='todo-header'>
@@ -33,7 +38,10 @@ export default class TodoForm extends React.Component {
           <input type='text' className='todo-input' placeholder='What needs to be done?'
           ref={value => {
             this.textInput = value;
-          }} />
+          }}
+          onChange={this.onChange}
+          value={this.state.value}
+          />
           <button type='submit' className='todo-add' onClick={(e) => this.onSubmit(e)}>+</button>
         </form>
       </div>

@@ -6,31 +6,16 @@ import '../../styles/todo/todo-list.css'
 
 export default class TodoList extends React.Component {
   constructor(props) {
-    super(props)
-    this.state = {
-      todos: [{
-        value: 'Clean the gutters',
-        completed: false
-      }, {
-        value: 'Water the plants',
-        completed: false
-      }, {
-        value: 'Feed the dog',
-        completed: false
-      }]
-    }
+    super(props);
   }
 
-  addTodo(todo) {
-    this.setState({
-      todos: [...this.state.todos, {todo}]
-    })
-  }
-  
   render() {
-    const todos = this.state.todos.map((todo, index) =>
+    const todos = this.props.todos.map((todo, index) =>
       <li key={index}>
-        <TodoItem {...todo} />
+        <TodoItem
+          {...todo}
+          toggleTodo={() => this.props.toggleTodo(index)}
+          removeTodo={() => this.props.removeTodo(index)} />
       </li>
     )
     return (

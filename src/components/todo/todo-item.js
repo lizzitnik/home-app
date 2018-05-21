@@ -6,12 +6,14 @@ export default function TodoItem(props) {
   return (
     <div className='todo-item'>
       <label className='item'>
-        <input className='checkbox' type='checkbox' checked={props.checked} />
+        <input className='checkbox' type='checkbox' checked={props.completed}
+          onClick={props.toggleTodo}/>
         <span></span>
         {props.value}
       </label>
       <div className='todo-buttons'>
-        <button type='button' className='todo-delete'>&mdash;</button>
+        <button type='button' className='todo-delete'
+          onClick={props.removeTodo}>&mdash;</button>
         <button type='button' className='todo-edit'>Edit</button>
       </div>
     </div>

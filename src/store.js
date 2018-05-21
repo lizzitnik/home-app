@@ -1,5 +1,8 @@
 import {createStore} from 'redux'
 
-//import {reducers} from './reducers'
+import {todoReducer} from './reducers/todo-reducers'
 
-//export default createStore(reducers)
+export default createStore(todoReducer,
+window.__REDUX_DEVTOOLS_EXTENSIONS__ &&
+window.__REDUX_DEVTOOLS_EXTENSIONS__()
+)

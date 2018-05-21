@@ -1,7 +1,7 @@
-import * as actions from '../actions'
+import * as actions from '../actions/todo-actions'
 
 const initialState = {
-  items: [{
+  todos: [{
     value: 'Clean the gutters',
     completed: false
   }, {
@@ -16,13 +16,28 @@ const initialState = {
 export const todoReducer = (state=initialState, action) => {
   switch (action.type) {
     case 'ADD_TODO':
-      return [
-        ...state,
-        {
-          value: action.value,
-          completed: false
+      return {
+        todos: [
+          {
+            value: action.value,
+            completed: false
+          },
+          ...state.todos
+        ]
+      }
+
+    case 'TOGGLE_TODO':
+        let todos = state.todos
+        todos[action.index].completed = !todos[action.index].completed
+        return {
+          todos
         }
-      ]
+
+    case 'REMOVE_TODO':
+        let remainingTodos = state.todos.filter(todo => todo.index !== action.index)
+        return {
+          remainingTodos
+        }
 
     default:
       return state;

@@ -10,7 +10,7 @@ export default class App extends React.Component {
     return (
       <div>
         <Header />
-        <Quote quote='Lorem ipsum dolor sit amet, reprimique theophrastus sed at, laudem intellegat his ex. Quando perfecto mel no, tation possim explicari eam no. An vero ancillae sea.' author='Lawrence Whiteside'/>
+        <Quote />
         <Weather />
         <Todo />
       </div>
