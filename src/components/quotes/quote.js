@@ -6,18 +6,19 @@ import '../../styles/quotes/quote.css'
 export default class Quote extends React.Component {
   constructor() {
     super();
-    this.state = {
-      quote: 'Blah Blah Blah',
-      author: 'Lawrence Whiteside'
-    }
+    this.state = {}
+    this.getQuotes()
   }
 
-  getQuotes() {
+  getQuotes = () => {
     const url = 'https://random-quote-generator.herokuapp.com/api/quotes/random'
     axios
       .get(url)
-      .then(data =>
-        this.setState({quote: data.data.quote, author: data.data.author}))
+      .then(res => {
+        this.setState({
+          quote: res.data.quote,
+          author: res.data.author
+        })})
   }
 
   render() {

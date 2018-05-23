@@ -34,9 +34,10 @@ export const todoReducer = (state=initialState, action) => {
         }
 
     case 'REMOVE_TODO':
-        let remainingTodos = state.todos.filter(todo => todo.index !== action.index)
+        let remainingTodos = state.todos.filter((todo, index) => index !== action.index)
         return {
-          remainingTodos
+          ...state,
+          todos: remainingTodos
         }
 
     default:
