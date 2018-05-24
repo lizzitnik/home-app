@@ -1,10 +1,14 @@
 import axios from "axios"
 
 export const WEATHER_SUCCESS = "WEATHER_SUCCESS"
-export const weatherSuccess = payload => ({
-  type: WEATHER_SUCCESS,
-  payload
-})
+export const weatherSuccess = payload => {
+  debugger
+  const forecasts = payload.DailyForecasts
+  return {
+    type: WEATHER_SUCCESS,
+    forecasts
+  }
+}
 
 export const WEATHER_FAILURE = "WEATHER_FAILURE"
 export const weatherfailure = payload => ({
@@ -24,46 +28,16 @@ export const getLatLng = () => (dispatch, getStore) => {
 }
 
 export const getLocation = (lat, lng) => (dispatch, getStore) => {
-  debugger
-  const LOCATION_URL = `https://developer.accuweather.com/locations/v1/cities/geoposition/search?q=${lat},${lng}`
+  const LOCATION_URL = `http://localhost:3001/location/${lat}/${lng}`
   axios(`${LOCATION_URL}`, {
     method: "GET",
-    // body: JSON.stringify(input),
     headers: {
       "Content-Type": "application/json"
     }
   })
-    .then(res => {
-      if (!res.ok) {
-        return Promise.reject(res.statusText)
-      }
-      return res.json()
-    })
     .then(data => {
       debugger
-      dispatch(fetchWeather(data))
-    })
-    .catch(err => Promise.reject(err))
-}
-
-export const fetchWeather = locationKey => (dispatch, getStore) => {
-  const WEATHER_URL = `https://developer.accuweather.com/accuweather-forecast-api/apis/${locationKey}`
-
-  axios(`${WEATHER_URL}`, {
-    method: "GET",
-    // body: JSON.stringify(input),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-    .then(res => {
-      if (!res.ok) {
-        return Promise.reject(res.statusText)
-      }
-      return res.json()
-    })
-    .then(data => {
-      dispatch(weatherSuccess(data))
+      dispatch(weatherSuccess(data.data))
     })
     .catch(err => Promise.reject(err))
 }
