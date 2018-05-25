@@ -47,8 +47,9 @@ export const todoReducer = (state = initialState, action) => {
     case 'WEATHER_SUCCESS':
       return {
         ...state,
-        forcasts: action:forcasts
+        forecasts: action.forecasts
       }
+
 
     default:
       return state

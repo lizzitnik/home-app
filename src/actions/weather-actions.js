@@ -1,11 +1,15 @@
 import axios from 'axios'
 
-export const WEATHER_SUCCESS = 'WEATHER_SUCCESS';
-export const weatherSuccess = payload => ({
-  const forcasts = payload.DailyForecasts
-  type: WEATHER_SUCCESS,
-  forcasts
-})
+export const WEATHER_SUCCESS = "WEATHER_SUCCESS"
+export const weatherSuccess = payload => {
+  debugger
+  const forecasts = payload.DailyForecasts
+  return {
+    type: WEATHER_SUCCESS,
+    forecasts
+  }
+}
+
 
 export const WEATHER_FAILURE = 'WEATHER_FAILURE';
 export const weatherFailure = payload => ({
@@ -28,11 +32,9 @@ export const getLocation = (lat, lng) => (dispatch, getStore) => {
       "Content-Type": "application/json"
     }
   })
-  .then(res => {
-    return res.json(data.data)
-  })
-  .then(data => {
-    dispatch(weatherSuccess(data))
-  })
-  .catch(err => Promise.reject(err))
+    .then(data => {
+      debugger
+      dispatch(weatherSuccess(data.data))
+    })
+    .catch(err => Promise.reject(err))
 }
