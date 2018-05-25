@@ -2,7 +2,6 @@ import axios from "axios"
 
 export const WEATHER_SUCCESS = "WEATHER_SUCCESS"
 export const weatherSuccess = payload => {
-  debugger
   const forecasts = payload.DailyForecasts
   return {
     type: WEATHER_SUCCESS,
@@ -36,7 +35,6 @@ export const getLocation = (lat, lng) => (dispatch, getStore) => {
     }
   })
     .then(data => {
-      debugger
       dispatch(weatherSuccess(data.data))
     })
     .catch(err => Promise.reject(err))
