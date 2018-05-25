@@ -1,62 +1,35 @@
 import axios from 'axios'
 
-export const WEATHER_SUCCESS =
-'WEATHER_SUCCESS';
+export const WEATHER_SUCCESS = 'WEATHER_SUCCESS';
 export const weatherSuccess = payload => ({
+  const forcasts = payload.DailyForecasts
   type: WEATHER_SUCCESS,
-  payload
+  forcasts
 })
 
-export const WEATHER_FAILURE =
-'WEATHER_FAILURE';
+export const WEATHER_FAILURE = 'WEATHER_FAILURE';
 export const weatherFailure = payload => ({
   type: WEATHER_FAILURE,
   payload
 })
 
 export const getLatLng = () => (dispatch, getStore) => {
-  navigator.geolocation.getCurrentPosition((position) => {
+  navigator.geolocation.getCurrentPosition(position => {
     const { latitude, longitude } = position.coords
     dispatch(getLocation(latitude, longitude))
   })
 }
 
 export const getLocation = (lat, lng) => (dispatch, getStore) => {
-  const LOCATION_URL =
-    `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=${lat},${lng}`
+  const LOCATION_URL = `http://localhost:3001/location/${lat}/${lng}`
   axios(`${LOCATION_URL}`, {
-    method: 'GET',
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-  .then(res => {
-    if (!res.ok) {
-      return Promise.reject(res.statusText)
-    }
-    return res.json()
-  })
-  .then(data => {
-    dispatch(fetchWeather(data))
-  })
-  .catch(err => Promise.reject(err))
-}
-
-const API_BASE_URL = 'http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}'
-export const fetchWeather = locationKey => (dispatch, getStore) => {
-  const WEATHER_URL = 'http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}'
-  axios(`${WEATHER_URL}`, {
     method: "GET",
-    //body:JSON.stringify(input),
     headers: {
       "Content-Type": "application/json"
     }
   })
   .then(res => {
-    if (!res.ok) {
-      return Promise.reject(res.statusText)
-    }
-    return res.json()
+    return res.json(data.data)
   })
   .then(data => {
     dispatch(weatherSuccess(data))

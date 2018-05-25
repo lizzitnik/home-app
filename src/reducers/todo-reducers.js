@@ -1,21 +1,25 @@
-import * as actions from '../actions/todo-actions'
+import * as actions from "../actions/todo-actions"
 
 const initialState = {
-  todos: [{
-    value: 'Clean the gutters',
-    completed: false
-  }, {
-    value: 'Water the plants',
-    completed: false
-  }, {
-    value: 'Feed the dog',
-    completed: false
-  }]
+  todos: [
+    {
+      value: "Clean the gutters",
+      completed: false
+    },
+    {
+      value: "Water the plants",
+      completed: false
+    },
+    {
+      value: "Feed the dog",
+      completed: false
+    }
+  ]
 }
 
-export const todoReducer = (state=initialState, action) => {
+export const todoReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_TODO':
+    case "ADD_TODO":
       return {
         todos: [
           {
@@ -26,12 +30,12 @@ export const todoReducer = (state=initialState, action) => {
         ]
       }
 
-    case 'TOGGLE_TODO':
-        let todos = state.todos
-        todos[action.index].completed = !todos[action.index].completed
-        return {
-          todos
-        }
+    case "TOGGLE_TODO":
+      let todos = state.todos
+      todos[action.index].completed = !todos[action.index].completed
+      return {
+        todos
+      }
 
     case 'REMOVE_TODO':
         let remainingTodos = state.todos.filter((todo, index) => index !== action.index)
@@ -40,7 +44,13 @@ export const todoReducer = (state=initialState, action) => {
           todos: remainingTodos
         }
 
+    case 'WEATHER_SUCCESS':
+      return {
+        ...state,
+        forcasts: action:forcasts
+      }
+
     default:
-      return state;
+      return state
   }
 }
