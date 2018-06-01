@@ -1,16 +1,26 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { fetchTodos } from '../../actions/todo-actions'
 
 import TodoItem from './todo-item'
 
 import '../../styles/todo/todo-list.css'
 
-export default class TodoList extends React.Component {
-  constructor(props) {
-    super(props);
+class TodoList extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(fetchTodos());
   }
 
   render() {
-    const todos = this.props.todos.map((todo, index) =>
+    if (this.props.error) {
+      return <div>Error! {this.props.error.message}</div>
+    }
+
+    if (this.props.loading) {
+      return <div>Loading...</div>
+    }
+    console.log(this.props.todos.todos)
+    const todos = this.props.todos.todos.map((todo, index) =>
       <li key={index}>
         <TodoItem
           {...todo}
@@ -27,3 +37,11 @@ export default class TodoList extends React.Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  todos: state.todos,
+  loading: state.loading,
+  error: state.error
+})
+
+export default connect(mapStateToProps)(TodoList)

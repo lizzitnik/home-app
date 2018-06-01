@@ -7,20 +7,20 @@ export default class Quote extends React.Component {
   constructor() {
     super();
     this.state = {}
-    this.getQuotes()
+    // this.getQuotes()
   }
 
-  getQuotes = () => {
-    const url = 'https://random-quote-generator.herokuapp.com/api/quotes/random'
-    axios
-      .get(url)
-      .then(res => {
-        this.setState({
-          quote: res.data.quote,
-          author: res.data.author
-        })
-      })
-  }
+  // getQuotes = () => {
+  //   const url = 'https://random-quote-generator.herokuapp.com/api/quotes/random'
+  //   axios
+  //     .get(url)
+  //     .then(res => {
+  //       this.setState({
+  //         quote: res.data.quote,
+  //         author: res.data.author
+  //       })
+  //     })
+  // }
 
   render() {
     return (

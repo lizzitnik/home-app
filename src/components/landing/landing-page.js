@@ -1,15 +1,22 @@
 import React from 'react'
+import LoginForm from './login-form'
+import {connect} from 'react-redux'
+
+import {Link, Redirect} from 'react-router-dom'
 
 import '../../styles/landing/landing-page.css'
 
-export default function Landing() {
+export default function Landing(props) {
+  if (props.loggedIn) {
+    return <Redirect to '/home' />
+  }
   return (
     <div className='landing-page'>
       <h2 className='landing-pitch'>Theres no place like Home</h2>
       <p className='landing-description'>Home is here to help you prepare
       for your day and give you a little peace of mind where ever you go.</p>
 
-      <div className='utiliy-sect'>
+      <div className='utility-sect'>
         <div className='box-1'>
           <p>Random Quote</p>
         </div>
@@ -20,6 +27,18 @@ export default function Landing() {
           <p>Todo List</p>
         </div>
       </div>
+
+      <LoginForm />
+
+      <h2>Need an account?
+        <Link to='/signup'>Sign-In</Link> now!
+      </h2>
     </div>
   )
 }
+
+const mapStateToProps = state => ({
+  loggedIn: state.auth.currentUser !== null
+})
+
+export default connect(mapStateToProps)(Landing)

@@ -1,50 +1,59 @@
 import React from 'react'
 import * as actions from '../../actions/todo-actions'
+import {Field, reduxForm, focus} from 'redux-form'
+import Input from '../login/input'
+import {addTodo} from '../../actions/todo-actions'
+import {required, nonEmpty, isTrimmed} from '../../validators'
 
 import '../../styles/todo/todo-form.css'
 
-export default class TodoForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: ''
-    }
-    //this.onSubmit = this.onSubmit.bind(this);
-  }
-
+export class TodoForm extends React.Component {
   clearInput() {
     this.setState({value: ''})
   }
 
-  onSubmit(e) {
-    e.preventDefault();
-    const value = this.textInput.value.trim();
-    if (value && this.props.onAdd) {
-      this.props.onAdd(value)
-    }
+  onSubmit(value) {
+    //const value = this.textInput.value.trim();
+
+    return this.props.dispatch(addTodo(value))
     this.clearInput();
   }
 
-  onChange = () => {
-    const value = this.textInput.value.trim()
-    this.setState({ value: value })
-  }
+  // onChange = () => {
+  //   const value = this.textInput.value.trim()
+  //   this.setState({ value: value })
+  // }
 
   render() {
     return (
       <div className='todo-header'>
         <h2 className='todo-title'>Todo List</h2>
-        <form className='todo-form'>
-          <input type='text' className='todo-input' placeholder='What needs to be done?'
-          ref={value => {
-            this.textInput = value;
-          }}
-          onChange={this.onChange}
-          value={this.state.value}
+        <form
+          className='todo-form'
+          onSubmit={this.props.handleSubmit(value =>
+            this.onSubmit(value)
+          )}>
+          <label htmlFor='todo-input'></label>
+          <Field
+            component={Input}
+            type='text'
+            name='todo-input'
+            id='todo-input'
+            validate={[required, nonEmpty, isTrimmed]}
           />
-          <button type='submit' className='todo-add' onClick={(e) => this.onSubmit(e)}>+</button>
+          <button
+            type='submit'
+            disabled={this.props.pristine || this.props.submitting}>
+            +
+          </button>
         </form>
       </div>
     )
   }
 }
+
+export default reduxForm({
+    form: 'todo',
+    onSubmitFail: (errors, dispatch) =>
+        dispatch(focus('todo', Object.keys(errors)[0]))
+})(TodoForm);

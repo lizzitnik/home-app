@@ -1,25 +1,36 @@
 import * as actions from "../actions/todo-actions"
 
 const initialState = {
-  todos: [
-    {
-      value: "Clean the gutters",
-      completed: false
-    },
-    {
-      value: "Water the plants",
-      completed: false
-    },
-    {
-      value: "Feed the dog",
-      completed: false
-    }
-  ]
+  todos: [],
+  loading: false,
+  error: null
 }
 
 export const todoReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "ADD_TODO":
+    case "FETCH_TODOS_BEGIN":
+      return {
+        ...state,
+        loading: true,
+        error: null
+      }
+
+    case "FETCH_TODOS_SUCCESS":
+      return {
+        ...state,
+        todos: action.todos,
+        loading: false
+      }
+
+    case "FETCH_TODOS_ERROR":
+      return {
+        ...state,
+        todos: [],
+        loading: false,
+        error: action.error
+      }
+
+    case "ADD_TODO_SUCCESS":
       return {
         todos: [
           {
@@ -30,7 +41,7 @@ export const todoReducer = (state = initialState, action) => {
         ]
       }
 
-    case "TOGGLE_TODO":
+    case "TOGGLE_TODO_SUCCESS":
       let todos = state.todos
       todos[action.index].completed = !todos[action.index].completed
       return {
@@ -43,8 +54,7 @@ export const todoReducer = (state = initialState, action) => {
           ...state,
           todos: remainingTodos
         }
-
-    case 'WEATHER_SUCCESS':
+    case "WEATHER_SUCCESS":
       return {
         ...state,
         forecasts: action.forecasts
