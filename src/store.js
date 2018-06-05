@@ -4,6 +4,7 @@ import { todoReducer } from "./reducers/todo-reducers"
 import thunk from "redux-thunk"
 import {loadAuthToken} from './local-storage';
 import authReducer from './reducers/auth-reducers';
+import {quoteReducer} from './reducers/quote-reducers'
 import protectedDataReducer from './reducers/protected-data';
 import {setAuthToken, refreshAuthToken} from './actions/auth-actions';
 
@@ -18,7 +19,8 @@ const reducer = combineReducers({
   form: formReducer,
   auth: authReducer,
   protected: protectedDataReducer,
-  todos: todoReducer
+  todos: todoReducer,
+  quote: quoteReducer
 })
 
 const store = createStore(reducer, enhancer)

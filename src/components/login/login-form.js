@@ -3,6 +3,7 @@ import {Field, reduxForm, focus} from 'redux-form'
 
 import {login} from '../../actions/auth-actions'
 import {required, nonEmpty} from '../../validators'
+import Input from './input'
 
 export class LoginForm extends React.Component {
   onSubmit(values) {

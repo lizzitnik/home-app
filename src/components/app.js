@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 import Home from './home'
 import Landing from './landing/landing-page'
-import Login from './login/login'
+import Signup from './login/signup-page'
 
 export default function App() {
   return (

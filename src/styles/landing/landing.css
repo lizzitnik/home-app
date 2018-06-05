@@ -1,0 +1,6 @@
+.landing-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 5px;
+  background-image: url('https://gallery.yopriceville.com/var/resizes/Backgrounds/Sweet_Home_Background.jpg?m=1449794761')
+}

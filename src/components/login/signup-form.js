@@ -1,9 +1,9 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
-import {registerUser} from '../actions/users';
-import {login} from '../actions/auth';
+import {registerUser} from '../../actions/user-actions';
+import {login} from '../../actions/auth-actions';
 import Input from './input';
-import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
+import {required, nonEmpty, matches, length, isTrimmed} from '../../validators';
 const passwordLength = length({min: 10, max: 72});
 const matchesPassword = matches('password');
 
@@ -62,4 +62,4 @@ export default reduxForm({
     form: 'registration',
     onSubmitFail: (errors, dispatch) =>
         dispatch(focus('registration', Object.keys(errors)[0]))
-})(RegistrationForm);
+})(SignupForm);

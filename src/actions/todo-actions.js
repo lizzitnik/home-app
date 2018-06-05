@@ -22,7 +22,6 @@ export const fetchTodosError = error => ({
 })
 
 export const ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS'
-debugger
 export const addTodoSuccess = (value) => ({
   type: ADD_TODO_SUCCESS,
   value
@@ -49,7 +48,7 @@ export const fetchTodos = () => (dispatch, getStore) => {
         dispatch(fetchTodosSuccess(todos))
       })
       .catch(error => {
-      dispatch(fetchTodosError(error))
+        dispatch(fetchTodosError(error))
     })
 }
 

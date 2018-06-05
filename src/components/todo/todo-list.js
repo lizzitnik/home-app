@@ -19,7 +19,6 @@ class TodoList extends React.Component {
     if (this.props.loading) {
       return <div>Loading...</div>
     }
-    console.log(this.props.todos.todos)
     const todos = this.props.todos.todos.map((todo, index) =>
       <li key={index}>
         <TodoItem

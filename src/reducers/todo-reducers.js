@@ -60,7 +60,6 @@ export const todoReducer = (state = initialState, action) => {
         forecasts: action.forecasts
       }
 
-
     default:
       return state
   }

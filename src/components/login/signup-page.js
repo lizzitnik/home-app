@@ -13,7 +13,7 @@ export function Signup(props) {
     <div className='signup'>
       <h2>SignUp</h2>
       <SignupForm />
-      <Link to '/'>Login</Link>
+      <Link to='/'>Login</Link>
     </div>
   )
 }
@@ -22,4 +22,4 @@ const mapStateToProps = state => ({
   loggedIn: state.auth.currentUser !== null
 })
 
-export default connect(mapStateToProps)(SignupPage)
+export default connect(mapStateToProps)(Signup)

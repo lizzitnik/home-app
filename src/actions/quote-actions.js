@@ -1,0 +1,42 @@
+import axios from 'axios'
+import {API_BASE_URL} from '../config'
+import {normalizeResponseErrors} from './utils';
+
+export const LOAD_QUOTE = 'LOAD_QUOTE'
+export const loadQuote = () => ({
+  type: LOAD_QUOTE
+})
+
+export const QUOTE_SUCCESS = "QUOTE_SUCCESS"
+debugger
+export const quoteSuccess = (quote) => ({
+  type: QUOTE_SUCCESS,
+  quote
+})
+
+export const QUOTE_FAILURE = 'QUOTE_FAILURE';
+export const quoteFailure = error => ({
+  type: QUOTE_FAILURE,
+  error
+})
+
+export const getQuote = () => (dispatch, getStore) => {
+  debugger
+  dispatch(loadQuote())
+  const QUOTE_URL = `${API_BASE_URL}/quote`
+  axios(`${QUOTE_URL}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    //.then(res => normalizeResponseErrors(res))
+    //.then(res => res.json())
+    .then(data => {
+      debugger
+      dispatch(quoteSuccess(data.data))
+    })
+    .catch(error => {
+      dispatch(quoteFailure(error))
+    })
+}

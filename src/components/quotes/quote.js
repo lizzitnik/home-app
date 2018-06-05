@@ -1,36 +1,45 @@
 import React from "react"
-import axios from "axios"
+import { connect } from 'react-redux'
+import { getQuote } from '../../actions/quote-actions'
 
 import "../../styles/quotes/quote.css"
 
-export default class Quote extends React.Component {
-  constructor() {
-    super();
-    this.state = {}
-    // this.getQuotes()
+class Quote extends React.Component {
+  componentDidMount() {
+    console.log(this.props)
+    this.props.dispatch(getQuote())
   }
 
-  // getQuotes = () => {
-  //   const url = 'https://random-quote-generator.herokuapp.com/api/quotes/random'
-  //   axios
-  //     .get(url)
-  //     .then(res => {
-  //       this.setState({
-  //         quote: res.data.quote,
-  //         author: res.data.author
-  //       })
-  //     })
-  // }
+  createQuote() {
+    return (
+      <div className="quote">
+        <p className="quote-text">{this.props.quote.quote}</p>
+        <p className="quote-author">&mdash;{this.props.quote.author}</p>
+      </div>
+    )
+  }
 
   render() {
+    if (this.props.error) {
+      return <div>Error! {this.props.error.message}</div>
+    }
+
+    if (this.props.loading) {
+      return <div>Loading...</div>
+    }
+
     return (
       <div className="quote-container">
-        <p className="quote-text">{this.state.quote}</p>
-        <p className="quote-author">&mdash;{this.state.author}</p>
-        <button className="quote-button" onClick={this.getQuotes}>
-          New quote
-        </button>
+        {this.createQuote()}
       </div>
     )
   }
 }
+
+const mapStateToProps = state => ({
+  quote: state.quote,
+  loading: state.loading,
+  error: state.error
+})
+
+export default connect(mapStateToProps)(Quote)
