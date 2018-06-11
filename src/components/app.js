@@ -1,17 +1,25 @@
 import React from 'react'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom'
 
 import Home from './home'
-import Landing from './landing/landing-page'
-import Signup from './login/signup-page'
+import LoginForm from './login/login-form'
+import SignupForm from './login/signup-form'
+
+import '../styles/app.css'
 
 export default function App() {
   return (
     <Router>
       <div className='app'>
         <main>
-          <Route exact path='/' component={Landing} />
-          <Route exact path='/signup' component={Signup} />
+          <Switch>
+            <Route exact path='/' component={LoginForm} />
+            <Route exact path='/signup' component={SignupForm} />
+          </Switch>
           <Route exact path='/home' component={Home} />
         </main>
       </div>

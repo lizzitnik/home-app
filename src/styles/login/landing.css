@@ -1,0 +1,73 @@
+.landing {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 5px;
+}
+
+.form {
+  margin: 50px;
+  border-radius: 4px;
+}
+
+.field {
+  width: 100%;
+  position: relative;
+  padding-top: 1.75em;
+  border-top: 1px solid lightgrey;
+  background-color: #fff;
+}
+
+.field {
+  border-bottom: 1px solid lightgrey;
+}
+
+.field label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px;
+  padding-top: 20px;
+  padding-bottom: 0;
+  margin: 0;
+  z-index: 1;
+  font-size: .8em;
+  color: grey;
+  font-weight: 400;
+  user-select: none;
+  cursor: text;
+}
+
+.form-input input {
+  position: relative;
+  padding: 1.625em 16px;
+  width: 100%;
+  font-size: 16px;
+  color: darkgrey;
+  border: none;
+  outline: 0;
+  letter-spacing: 0.05em;
+}
+
+.btn-container button {
+  border: none;
+  background: none;
+  color: darkgrey;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.btn-container button:hover {
+  color: black;
+  background-color: lightgrey;
+}
+
+.btn-container {
+  height: 50px;
+  border: none;
+  background-color: #fff;
+  border-top: 1px solid lightgrey;
+  color: white;
+  margin: 0 auto;
+}

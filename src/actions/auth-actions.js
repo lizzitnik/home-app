@@ -2,7 +2,7 @@ import jwtDecode from 'jwt-decode';
 import {SubmissionError} from 'redux-form';
 
 import {API_BASE_URL} from '../config';
-import {normalizeResponseErrors} from './utils';
+//import {normalizeResponseErrors} from './utils';
 import {saveAuthToken, clearAuthToken} from '../local-storage';
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN'
@@ -34,18 +34,20 @@ export const authError = error => ({
 });
 
 const storeAuthInfo = (authToken, dispatch) => {
-  const decodedToken = jwtDecode(authToken);
-  dispatch(setAuthToken(authToken));
-  dispatch(authSuccess(decodedToken.user));
-  saveAuthToken(authToken);
-}
+    const decodedToken = jwtDecode(authToken);
+    dispatch(setAuthToken(authToken));
+    dispatch(authSuccess(decodedToken.user));
+    saveAuthToken(authToken);
+};
 
 export const login = (username, password) => dispatch => {
   dispatch(authRequest());
+  debugger
   return (
     fetch(`${API_BASE_URL}/auth/login`, {
       method: "POST",
       headers: {
+        'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -54,7 +56,7 @@ export const login = (username, password) => dispatch => {
       })
     })
 
-    .then(res => normalizeResponseErrors(res))
+    // .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(({authToken}) => storeAuthInfo(authToken, dispatch))
     .catch(err => {
@@ -82,7 +84,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
       Authorization: `Bearer ${authToken}`
     }
   })
-    .then(res => normalizeResponseErrors(res))
+    // .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(({authToken}) => storeAuthInfo(authToken, dispatch))
     .catch(err => {

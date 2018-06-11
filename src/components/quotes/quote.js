@@ -10,15 +10,6 @@ class Quote extends React.Component {
     this.props.dispatch(getQuote())
   }
 
-  createQuote() {
-    return (
-      <div className="quote">
-        <p className="quote-text">{this.props.quote.quote}</p>
-        <p className="quote-author">&mdash;{this.props.quote.author}</p>
-      </div>
-    )
-  }
-
   render() {
     if (this.props.error) {
       return <div>Error! {this.props.error.message}</div>
@@ -30,7 +21,10 @@ class Quote extends React.Component {
 
     return (
       <div className="quote-container">
-        {this.createQuote()}
+        <div className="quote">
+          <p className="quote-text">{this.props.quote.quote.quote}</p>
+          <p className="quote-author">&mdash;{this.props.quote.quote.author}</p>
+        </div>
       </div>
     )
   }

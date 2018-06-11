@@ -1,4 +1,8 @@
-import * as actions from "../actions/quote-actions"
+import {
+  LOAD_QUOTE,
+  QUOTE_SUCCESS,
+  QUOTE_FAILURE
+} from "../actions/quote-actions"
 
 const initialState = {
   quote: '',
@@ -9,20 +13,20 @@ const initialState = {
 
 export const quoteReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "LOAD_QUOTE":
+    case LOAD_QUOTE:
       return {
         ...state,
         loading: true,
         error: null
       }
-
-    case "QUOTE_SUCCESS":
+    case QUOTE_SUCCESS:
+    console.log(action.payload)
       return {
-        quote: action.quote,
+        quote: action.payload,
         loading: false
       }
 
-    case "QUOTE_FAILURE":
+    case QUOTE_FAILURE:
       return {
         ...state,
         loading: false,

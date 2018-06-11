@@ -8,10 +8,9 @@ export const loadQuote = () => ({
 })
 
 export const QUOTE_SUCCESS = "QUOTE_SUCCESS"
-debugger
 export const quoteSuccess = (quote) => ({
   type: QUOTE_SUCCESS,
-  quote
+  payload: quote
 })
 
 export const QUOTE_FAILURE = 'QUOTE_FAILURE';
@@ -21,7 +20,6 @@ export const quoteFailure = error => ({
 })
 
 export const getQuote = () => (dispatch, getStore) => {
-  debugger
   dispatch(loadQuote())
   const QUOTE_URL = `${API_BASE_URL}/quote`
   axios(`${QUOTE_URL}`, {
@@ -33,7 +31,6 @@ export const getQuote = () => (dispatch, getStore) => {
     //.then(res => normalizeResponseErrors(res))
     //.then(res => res.json())
     .then(data => {
-      debugger
       dispatch(quoteSuccess(data.data))
     })
     .catch(error => {

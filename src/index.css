@@ -6,4 +6,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  /* background: linear-gradient(
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.4)),
+    url('https://gallery.yopriceville.com/var/albums/Backgrounds/Sweet_Home_Background.jpg?m=1449794760');
+  background-size: cover; */
 }
