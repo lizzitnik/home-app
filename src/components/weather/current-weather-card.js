@@ -10,7 +10,6 @@ class Current extends React.Component {
   }
 
   render () {
-    console.log(this.props)
     return (
       <div className='card current-weather-card'>
         <div className='day current-day'>Monday</div>

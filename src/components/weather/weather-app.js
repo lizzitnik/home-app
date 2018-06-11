@@ -14,7 +14,7 @@ class Weather extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props.weather.forecasts)
     return (
       <div className="weather-app">
         <Current />
