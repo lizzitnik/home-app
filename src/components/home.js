@@ -1,11 +1,12 @@
 import React from "react"
+import { connect } from 'react-redux'
 
 import Header from "./header/header"
 import Quote from "./quotes/quote"
 import Weather from "./weather/weather-app"
 import Todo from "./todo/todo-app"
 
-export default class Home extends React.Component {
+export class Home extends React.Component {
   render() {
     return (
       <div>
@@ -17,3 +18,5 @@ export default class Home extends React.Component {
     )
   }
 }
+
+export default connect(state => state)(Home)

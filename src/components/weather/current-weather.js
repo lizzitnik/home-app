@@ -1,27 +1,29 @@
 import React from 'react';
+import {getLatLng} from '../../actions/weather-actions'
 
 import CurrentCard from './current-weather-card'
 
 import '../../styles/weather/weather-card.css'
 
 export default class Current extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      current: {
-        day: 'Monday',
-        temp: '65',
-        max: '78',
-        min: '58',
-        condition: 'sunny'
-      }
-    }
-  }
   render() {
-    const current = this.state.current
+
+    if (this.props.forecasts) {
+      const today = this.props.forecasts[0]
+    } else {
+      const today = {};
+    }
+    
     return (
       <div className='weather current-weather'>
-        <CurrentCard {...current} />
+        <div className='card current-weather-card'>
+          <div className='day current-day'>Monday</div>
+          <div className='current-temp'>
+            <span className='temp'>{}</span>
+          </div>
+          <div className='min-max current-min-max'>{}&deg; | {}&deg;</div>
+          <div className='condition current-condition'>{}</div>
+        </div>
       </div>
     )
   }

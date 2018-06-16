@@ -1,6 +1,7 @@
 import React from 'react'
 import {Field, reduxForm, focus} from 'redux-form'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
+import {connect} from 'react-redux'
 
 import Pitch from './pitch'
 import {login} from '../../actions/auth-actions'
@@ -11,11 +12,17 @@ import '../../styles/login/landing.css'
 
 export class LoginForm extends React.Component {
   onSubmit(values) {
-    return this.props.dispatch(login(values.username, values.password))
+    return this.props.dispatch(login(values.user, values.pass))
   }
 
   render() {
+
+    if (this.props.auth.currentUser) {
+      return <Redirect to='/home' />
+    }
+
     let error;
+
     if (this.props.error) {
       error = (
         <div className='form-error' aria-live='polite'>
@@ -66,6 +73,6 @@ export class LoginForm extends React.Component {
 }
 
 export default reduxForm({
-  form: 'login',
-  onSubmitFail: (errors, dispatch) => dispatch(focus('login', 'username'))
-})(LoginForm)
+  form: "login",
+  onSubmitFail: (errors, dispatch) => dispatch(focus("login", "username"))
+})(connect(state => state)(LoginForm))

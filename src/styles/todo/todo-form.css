@@ -6,23 +6,26 @@
   margin: 0;
 }
 
-.todo-form {
+/* form {
   display: grid;
   grid-template-columns: 10fr 1fr;
   border: 1px solid lightgrey;
   border-radius: 4px;
-  height: 60px;
-}
+} */
 
-.todo-input {
+/* .form-error {
+  display: none;
+} */
+
+/* .todo-form input   {
   width: 100%;
   height: 100%;
-  border: none;
+  height: 60px;
   font-size: 30px;
   padding: 10px;
 }
 
-.todo-add {
+.todo-header button {
   border: none;
   background: none;
   font-size: 30px;
@@ -30,8 +33,8 @@
   color: grey;
 }
 
-.todo-add:hover {
+.todo-header button:hover {
   background: lightgrey;
   color: black;
   cursor: pointer;
-}
+} */

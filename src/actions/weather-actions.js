@@ -3,7 +3,7 @@ import {API_BASE_URL} from '../config'
 
 export const WEATHER_SUCCESS = "WEATHER_SUCCESS"
 export const weatherSuccess = payload => {
-  const forecasts = payload.DailyForecasts
+  const forecasts = payload.list
   return {
     type: WEATHER_SUCCESS,
     forecasts
@@ -11,9 +11,9 @@ export const weatherSuccess = payload => {
 }
 
 export const WEATHER_FAILURE = 'WEATHER_FAILURE';
-export const weatherFailure = payload => ({
+export const weatherFailure = error => ({
   type: WEATHER_FAILURE,
-  payload
+  error
 })
 
 export const getLatLng = () => (dispatch, getStore) => {
@@ -25,14 +25,12 @@ export const getLatLng = () => (dispatch, getStore) => {
 
 export const getLocation = (lat, lng) => (dispatch, getStore) => {
   const LOCATION_URL = `${API_BASE_URL}/location/${lat}/${lng}`
-  axios(`${LOCATION_URL}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
+  fetch(`${LOCATION_URL}`)
+    .then(res => res.json())
     .then(data => {
-      dispatch(weatherSuccess(data.data))
+      dispatch(weatherSuccess(data))
     })
-    .catch(err => Promise.reject(err))
+    .catch(error => {
+      dispatch(weatherFailure(error))
+    })
 }

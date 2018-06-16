@@ -33,7 +33,6 @@ export class TodoForm extends React.Component {
           onSubmit={this.props.handleSubmit(value =>
             this.onSubmit(value)
           )}>
-          <label htmlFor='todo-input'></label>
           <Field
             component={Input}
             type='text'

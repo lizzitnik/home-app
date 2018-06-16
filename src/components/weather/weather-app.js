@@ -9,19 +9,23 @@ import '../../styles/weather/weather-app.css'
 
 class Weather extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     props.dispatch(getLatLng())
   }
 
   render() {
-    console.log(this.props.weather.forecasts)
+    const forecasts = this.props.weather.forecasts
     return (
       <div className="weather-app">
-        <Current />
-        <Daily />
+        <Current forecasts={forecasts} />
+        <Daily forecasts={forecasts}/>
       </div>
     )
   }
 }
 
-export default connect(state => state)(Weather)
+export default connect(store => {
+  const props = store
+  props.updated = new Date()
+  return props
+})(Weather)

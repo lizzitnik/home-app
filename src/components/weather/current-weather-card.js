@@ -1,12 +1,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getLocation} from '../../actions/weather-actions'
+import {getLatLng} from '../../actions/weather-actions'
 
 import '../../styles/weather/weather-card.css'
 
 class Current extends React.Component {
   componentDidMount() {
-    this.props.dispatch(getLocation())
+    this.props.dispatch(getLatLng())
   }
 
   render () {
@@ -24,7 +24,7 @@ class Current extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  forcasts: state.forcasts
+  forecasts: state.forecasts
 })
 
 export default connect(mapStateToProps)(Current)

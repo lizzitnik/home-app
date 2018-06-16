@@ -41,8 +41,7 @@ export const removeTodoSuccess = (index) => ({
 
 export const fetchTodos = () => (dispatch, getStore) => {
   dispatch(fetchTodosBegin());
-  return fetch(`${TODO_URL}`)
-      .then(res => normalizeResponseErrors(res))
+  fetch(`${TODO_URL}`)
       .then(res => res.json())
       .then(todos => {
         dispatch(fetchTodosSuccess(todos))
@@ -53,7 +52,7 @@ export const fetchTodos = () => (dispatch, getStore) => {
 }
 
 export const addTodo = (value) => (dispatch, getStore) => {
-  return fetch(`${TODO_URL}`, {
+  fetch(`${TODO_URL}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

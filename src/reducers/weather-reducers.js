@@ -14,7 +14,7 @@ export const weatherReducer = (state = initialState, action) => {
       }
     case WEATHER_FAILURE:
       return {
-        error: action.payload
+        error: action.error
       }
 
     default:
