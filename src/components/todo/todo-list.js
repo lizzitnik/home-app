@@ -23,8 +23,8 @@ class TodoList extends React.Component {
       <li key={index}>
         <TodoItem
           {...todo}
-          toggleTodo={() => this.props.toggleTodo(index)}
-          removeTodo={() => this.props.removeTodo(index)} />
+          toggleTodo={() => this.props.toggleTodo(todo.id)}
+          removeTodo={() => this.props.removeTodo(todo.id)} />
       </li>
     )
     return (

@@ -7,7 +7,7 @@ export default function TodoItem(props) {
     <div className='todo-item'>
       <label className='item'>
         <input className='checkbox' type='checkbox' checked={props.completed}
-          onClick={props.toggleTodo}/>
+          onClick={() => props.toggleTodo(props.id)}/>
         <span></span>
         {props.value}
       </label>
