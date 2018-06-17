@@ -1,7 +1,5 @@
 import {
-  FETCH_TODOS_BEGIN,
   FETCH_TODOS_SUCCESS,
-  FETCH_TODOS_ERROR,
   ADD_TODO_SUCCESS,
   TOGGLE_TODO_SUCCESS,
   REMOVE_TODO_SUCCESS
@@ -15,13 +13,6 @@ const initialState = {
 
 export const todoReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_TODOS_BEGIN:
-      return {
-        ...state,
-        loading: true,
-        error: null
-      }
-
     case FETCH_TODOS_SUCCESS:
       return {
         ...state,
@@ -29,31 +20,26 @@ export const todoReducer = (state = initialState, action) => {
         loading: false
       }
 
-    case FETCH_TODOS_ERROR:
-      return {
-        ...state,
-        todos: [],
-        loading: false,
-        error: action.error
-      }
+    // case FETCH_TODOS_ERROR:
+    //   return {
+    //     ...state,
+    //     todos: [],
+    //     loading: false,
+    //     error: action.error
+    //   }
 
     case ADD_TODO_SUCCESS:
       return {
-        todos: [
-          {
-            value: action.value,
-            completed: false
-          },
-          ...state.todos
-        ]
+        todos: [...action.todo, ...state.todos]
       }
 
     case TOGGLE_TODO_SUCCESS:
       let todos = state.todos
-      todos[action.index].completed = !todos[action.index].completed
-      return {
-        todos
-      }
+      todos.forEach(todo => {
+        if (todo => todo.id === action.todo.id) {
+          todo.completed = !todo.completed
+        }
+      })
 
     case REMOVE_TODO_SUCCESS:
         let remainingTodos = state.todos.filter((todo, index) => index !== action.index)
