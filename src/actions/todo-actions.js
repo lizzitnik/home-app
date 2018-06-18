@@ -11,6 +11,7 @@ export const fetchTodosSuccess = todos => ({
 })
 
 export const ADD_TODO_SUCCESS = 'ADD_TODO_SUCCESS'
+debugger
 export const addTodoSuccess = (value) => ({
   type: ADD_TODO_SUCCESS,
   todo: value

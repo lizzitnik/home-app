@@ -1,7 +1,9 @@
 import React from 'react'
 import * as actions from '../../actions/todo-actions'
+import {Field, reduxForm, focus} from 'redux-form'
+import Input from '../login/input'
 import {addTodo} from '../../actions/todo-actions'
-import {connect} from 'react-redux'
+import {required, nonEmpty, isTrimmed} from '../../validators'
 
 import '../../styles/todo/todo-form.css'
 
@@ -11,6 +13,9 @@ export class TodoForm extends React.Component {
   }
 
   onSubmit(value) {
+    debugger
+    //const value = this.textInput.value.trim();
+
     return this.props.dispatch(addTodo(value))
     this.clearInput();
   }
@@ -21,23 +26,34 @@ export class TodoForm extends React.Component {
   // }
 
   render() {
-    debugger
     return (
       <div className='todo-header'>
         <h2 className='todo-title'>Todo List</h2>
         <form
           className='todo-form'
-          onSubmit={this.props.onAdd(value =>
+          onSubmit={this.props.handleSubmit(value =>
             this.onSubmit(value)
-        )}>
-          <input
+          )}>
+          <Field
+            component={Input}
             type='text'
-            ref={input => this.textInput = input}
-            className='todo-input'
+            name='input'
+            id='input'
+            validate={[required, nonEmpty, isTrimmed]}
           />
-          <button type='submit'>+</button>
+          <button
+            type='submit'
+            disabled={this.props.pristine || this.props.submitting}>
+            +
+          </button>
         </form>
       </div>
     )
   }
 }
+
+export default reduxForm({
+    form: 'todo',
+    onSubmitFail: (errors, dispatch) =>
+        dispatch(focus('todo', Object.keys(errors)[0]))
+})(TodoForm);

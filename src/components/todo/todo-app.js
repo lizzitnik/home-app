@@ -12,7 +12,6 @@ import "../../styles/todo/todo-app.css"
 class Todo extends React.Component {
   constructor(props) {
     super(props)
-    props.dispatch(getLatLng())
   }
 
   addTodo = value => {

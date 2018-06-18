@@ -29,8 +29,15 @@ export const todoReducer = (state = initialState, action) => {
     //   }
 
     case ADD_TODO_SUCCESS:
+    debugger
       return {
-        todos: [...action.todo, ...state.todos]
+        todos: [
+        {
+          value: action.todo,
+          completed: false
+        },
+         ...state.todos
+       ]
       }
 
     case TOGGLE_TODO_SUCCESS:
