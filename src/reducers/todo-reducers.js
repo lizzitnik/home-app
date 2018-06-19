@@ -30,23 +30,27 @@ export const todoReducer = (state = initialState, action) => {
 
     case ADD_TODO_SUCCESS:
       return {
-        todos: [...action.todo, ...state.todos]
+        ...state,
+        todos: [action.todo, ...state.todos]
       }
 
     case TOGGLE_TODO_SUCCESS:
       let todos = state.todos
-      todos.forEach(todo => {
-        if (todo => todo.id === action.todo.id) {
-          todo.completed = !todo.completed
-        }
-      })
+      return {
+        ...state,
+        todos: todos.map(todo => {
+          if (todo.id === action.todo.data.id) {
+            todo.completed = !todo.completed
+          }
+          return todo
+        })
+      }
 
     case REMOVE_TODO_SUCCESS:
-        let remainingTodos = state.todos.filter((todo, index) => index !== action.index)
-        return {
-          ...state,
-          todos: remainingTodos
-        }
+      return {
+        ...state,
+        todos: state.todos.filter((todo, index) => todo.id !== action.todo.id)
+      }
 
     default:
       return state
