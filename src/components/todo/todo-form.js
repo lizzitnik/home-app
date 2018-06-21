@@ -1,5 +1,4 @@
 import React from 'react'
-import * as actions from '../../actions/todo-actions'
 import {Field, reduxForm, focus} from 'redux-form'
 import Input from '../login/input'
 import {addTodo} from '../../actions/todo-actions'
@@ -15,7 +14,7 @@ export class TodoForm extends React.Component {
   onSubmit(value) {
     //const value = this.textInput.value.trim();
 
-    return this.props.dispatch(addTodo(value))
+    this.props.dispatch(addTodo(value))
     this.clearInput();
   }
 
@@ -35,6 +34,7 @@ export class TodoForm extends React.Component {
           )}>
           <Field
             component={Input}
+            className='todo-input'
             type='text'
             name='todo-input'
             id='todo-input'

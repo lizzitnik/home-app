@@ -62,11 +62,11 @@ export const login = (username, password) => dispatch => {
           ? 'Incorrect username or password'
           : "Unable to login, please try again";
       dispatch(authError(err));
-      // return Promise.reject(
-      //     new SubmissionError({
-      //       _error: message
-      //     })
-      // )
+      return Promise.reject(
+          new SubmissionError({
+            _error: message
+          })
+      )
     })
 }
 

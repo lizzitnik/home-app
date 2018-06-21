@@ -1,29 +1,57 @@
 .daily-weather {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-column-gap: 5px;
+  grid-column-gap: 30px;
+  color: white;
+  padding-left: 20%;
+  padding-right: 20%;
 }
 
 .card {
   text-align: center;
   padding: 10px;
-  padding-right: 50px;
-  padding-left: 50px;
 }
 
 .current-weather-card {
-  border-left: 1px solid lightgrey;
-  border-right: 1px solid lightgrey;
+  margin-right: 41%;
+  margin-left: 41%;
 }
 
 .current-temp {
+  width: 100%;
+}
+
+.current-temp:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
   border-radius: 50%;
-  padding: 78px;
   border: 1px solid lightgrey;
 }
 
 .daily-avg {
+  width: 100%;
+}
+
+.daily-avg:after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
   border-radius: 50%;
-  padding: 78px;
-  border: 1px solid lightgrey;
+  border: 1px solid white;
+}
+
+.avg,
+.temp {
+  float: left;
+  width: 100%;
+  padding-top: 47%;
+  line-height: 1em;
+  margin-top: -0.5;
+  text-align: center;
+  color: white;
 }

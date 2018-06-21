@@ -3,7 +3,9 @@
   display: grid;
   grid-template-columns: 1fr;
   margin: 20px 20% 20px 20%;
+  text-align: center;
 }
 
-.quote-text {
+.quote {
+  color: white;
 }

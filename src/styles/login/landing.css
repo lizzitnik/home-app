@@ -71,3 +71,8 @@
   color: white;
   margin: 0 auto;
 }
+
+.login-page .form-error {
+  float: right;
+  color: red;
+}

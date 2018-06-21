@@ -1,6 +1,5 @@
 import axios from "axios"
 import { API_BASE_URL } from "../config"
-import { normalizeResponseErrors } from "./utils"
 
 const TODO_URL = `${API_BASE_URL}/todos`
 
@@ -24,7 +23,6 @@ export const toggleTodoSuccess = todo => ({
 
 export const REMOVE_TODO_SUCCESS = "REMOVE_TODO_SUCCESS"
 export const removeTodoSuccess = todo => {
-  debugger
   return {
     type: REMOVE_TODO_SUCCESS,
     todo: todo

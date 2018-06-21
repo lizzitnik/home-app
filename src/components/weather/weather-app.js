@@ -14,18 +14,18 @@ class Weather extends React.Component {
   }
 
   render() {
-    const forecasts = this.props.weather.forecasts
+    const weather = this.props.weather
     return (
       <div className="weather-app">
-        <Current forecasts={forecasts} />
-        <Daily forecasts={forecasts}/>
+        <Current weather={weather} />
+        <Daily weather={weather}/>
       </div>
     )
   }
 }
 
-export default connect(store => {
-  const props = store
-  props.updated = new Date()
-  return props
-})(Weather)
+export default connect(store => store)(Weather)
+
+// const props = store
+// props.updated = new Date()
+// return props

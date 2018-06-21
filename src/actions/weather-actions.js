@@ -1,9 +1,14 @@
-import axios from 'axios'
 import {API_BASE_URL} from '../config'
 
+export const LOAD_WEATHER = "LOAD_WEATHER"
+export const loadWeather = () => {
+  return {
+    type: LOAD_WEATHER
+  }
+}
 export const WEATHER_SUCCESS = "WEATHER_SUCCESS"
 export const weatherSuccess = payload => {
-  const forecasts = payload.list
+  const forecasts = payload.periods
   return {
     type: WEATHER_SUCCESS,
     forecasts
@@ -17,6 +22,7 @@ export const weatherFailure = error => ({
 })
 
 export const getLatLng = () => (dispatch, getStore) => {
+  dispatch(loadWeather())
   navigator.geolocation.getCurrentPosition(position => {
     const { latitude, longitude } = position.coords
     dispatch(getLocation(latitude, longitude))
@@ -28,7 +34,7 @@ export const getLocation = (lat, lng) => (dispatch, getStore) => {
   fetch(`${LOCATION_URL}`)
     .then(res => res.json())
     .then(data => {
-      dispatch(weatherSuccess(data))
+      dispatch(weatherSuccess(data.response[0]))
     })
     .catch(error => {
       dispatch(weatherFailure(error))

@@ -1,7 +1,7 @@
 .weather-app {
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr;
   grid-column-gap: 5px;
-  margin: 25px;
-  margin-top: 100px;
+  margin-top: 50px;
+  color: white;
 }

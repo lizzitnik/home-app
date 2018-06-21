@@ -1,6 +1,5 @@
 import axios from 'axios'
 import {API_BASE_URL} from '../config'
-import {normalizeResponseErrors} from './utils';
 
 export const LOAD_QUOTE = 'LOAD_QUOTE'
 export const loadQuote = () => ({
@@ -28,8 +27,6 @@ export const getQuote = () => (dispatch, getStore) => {
       "Content-Type": "application/json"
     }
   })
-    //.then(res => normalizeResponseErrors(res))
-    //.then(res => res.json())
     .then(data => {
       dispatch(quoteSuccess(data.data))
     })

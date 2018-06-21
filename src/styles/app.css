@@ -1,1 +1,4 @@
-
+.app {
+  background: url('./black-background.jpg');
+  background-size: contain;
+}
