@@ -20,15 +20,8 @@ export const todoReducer = (state = initialState, action) => {
         loading: false
       }
 
-    // case FETCH_TODOS_ERROR:
-    //   return {
-    //     ...state,
-    //     todos: [],
-    //     loading: false,
-    //     error: action.error
-    //   }
-
     case ADD_TODO_SUCCESS:
+    debugger
       return {
         ...state,
         todos: [action.todo, ...state.todos]

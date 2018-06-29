@@ -33,36 +33,39 @@ export class LoginForm extends React.Component {
     return (
     <div className='login-page landing'>
       <Pitch />
-      <form
-        className='login-form form'
-        onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
-        {error}
-        <div className='field'>
-          <label htmlFor='user'>Username</label>
-          <Field
-            component={Input}
-            type='text'
-            name='user'
-            id='user'
-            validate={[required, nonEmpty]}
-          />
-        </div>
-        <div className='field'>
-          <label htmlFor='pass'>Password</label>
-          <Field
-            component={Input}
-            type='password'
-            name='pass'
-            id='pass'
-            validate={[required, nonEmpty]}
-          />
-        </div>
-        <div className='btn-container'>
-          <button disabled={this.props.pristine || this.props.submitting}>
-            Login
-          </button>
-        </div>
-      </form>
+      <div className='form-container'>
+        <form
+          className='login-form form'
+          onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}>
+          {error}
+          <h2>Login Here!</h2>
+          <div className='field'>
+            <label htmlFor='user'>Username</label>
+            <Field
+              component={Input}
+              type='text'
+              name='user'
+              id='user'
+              validate={[required, nonEmpty]}
+            />
+          </div>
+          <div className='field'>
+            <label htmlFor='pass'>Password</label>
+            <Field
+              component={Input}
+              type='password'
+              name='pass'
+              id='pass'
+              validate={[required, nonEmpty]}
+            />
+          </div>
+          <div className='btn-container'>
+            <button disabled={this.props.pristine || this.props.submitting}>
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
       <div className='footer-li'>
         <p>New Here?</p>
         <Link to='/signup'>Signup!</Link>

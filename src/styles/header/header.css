@@ -1,15 +1,59 @@
 .header {
   width: 100%;
-  height: 100px;
-  background-color: lightgrey;
-  margin-top: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-.icon, .title {
-  display: inline-block;
-  margin: 0;
-}
-
-h1 {
+.logo {
+  margin-left: 10px;
+  margin-top: 10px;
+  font-size: 20px;
+  font-family: 'manifestoregular';
   color: white;
+}
+
+.header button,
+.logo {
+  display: block;
+}
+
+.header button {
+  margin: 10px;
+  margin-left: 90%;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
+.header button:hover {
+  background-color: lightgrey;
+}
+
+.intro {
+  text-align: center;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.title {
+  font-size: 30px;
+  margin-top: -20px;
+  margin-bottom: -10px;
+  font-family: 'manifestoregular';
+}
+
+@font-face {
+    font-family: 'gloss_and_bloomregular';
+    src: url('../gloss_and_bloom-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'manifestoregular';
+    src: url('../manifesto-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }

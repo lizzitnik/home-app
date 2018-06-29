@@ -1,4 +1,7 @@
 .app {
-  background: url('./black-background.jpg');
-  background-size: contain;
+  background: url('./mountain.jpg');
+  background-size: cover;
+  min-height: 100vh;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 25px;
 }

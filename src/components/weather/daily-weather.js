@@ -1,50 +1,45 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
 import DailyCard from './daily-weather-card'
 
 import '../../styles/weather/weather-card.css'
 
-export default class Daily extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      dailies: [{
-        day: 'Tuesday',
-        avg: '54',
-        max: '65',
-        min: '43',
-        condition: 'sunny'
-      }, {
-        day: 'Wednesday',
-        avg: '45',
-        max: '57',
-        min: '33',
-        condition: 'cloudy'
-      }, {
-        day: 'Thursday',
-        avg: '50',
-        max: '68',
-        min: '32',
-        condition: 'partly-sunny'
-      }, {
-        day: 'Friday',
-        avg: '60',
-        max: '70',
-        min: '50',
-        condition: 'sunny'
-      }]
-    }
-  }
+export class Daily extends React.Component {
   render() {
-    const dailies = this.state.dailies.map((daily, index) =>
-      <div key={index}>
-        <DailyCard {...daily} />
-      </div>
-    )
-    return (
-      <div className='weather daily-weather'>
-        {dailies}
-      </div>
-    )
-  }
+      const thisWeek = this.props.weather.forecasts
+      if (thisWeek.length === 0) {
+        return <div>Loading...</div>
+      }
+      if (this.props.weather.error) {
+        return <div>Error! {this.props.error.message}</div>
+
+      } else if (this.props.weather.loading) {
+        return <div>Loading...</div>
+
+      } else {
+        const sliced = this.props.weather.forecasts.slice(1, 1 + 4)
+        const dailies = sliced.map((daily, index) =>
+          <div key={index}>
+            <DailyCard
+              {...daily}
+              handleTempColor={this.props.handleTempColor}
+            />
+          </div>
+        )
+
+        return (
+          <div className='weather daily-weather'>
+            {dailies}
+          </div>
+        )
+      }
+    }
 }
+
+
+const mapStateToProps = state => ({
+  forescasts: state.forecasts
+})
+
+export default connect(mapStateToProps)(Daily)

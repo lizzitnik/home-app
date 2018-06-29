@@ -1,4 +1,5 @@
 import React from "react"
+import CurrentDate from '../date/date'
 import { connect } from 'react-redux'
 import { getQuote } from '../../actions/quote-actions'
 
@@ -6,7 +7,6 @@ import "../../styles/quotes/quote.css"
 
 class Quote extends React.Component {
   componentDidMount() {
-    console.log(this.props)
     this.props.dispatch(getQuote())
   }
 
@@ -15,17 +15,17 @@ class Quote extends React.Component {
       return <div>Error! {this.props.error.message}</div>
     }
 
-    if (this.props.loading) {
+    if (this.props.quote.loading) {
       return <div>Loading...</div>
     }
-
+    const quote = this.props.quote.quote
     return (
-      <div className="quote-container">
-        <div className="quote">
-          <p className="quote-text">{this.props.quote.quote.quote}</p>
-          <p className="quote-author">&mdash;{this.props.quote.quote.author}</p>
+        <div className="quote-container">
+          <div className="quote">
+            <p className="quote-text">{quote.quoteText}</p>
+            <p className="quote-author">&mdash;{quote.quoteAuthor ? quote.quoteAuthor : 'Anonymous'}</p>
+          </div>
         </div>
-      </div>
     )
   }
 }

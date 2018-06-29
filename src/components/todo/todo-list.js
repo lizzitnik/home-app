@@ -13,6 +13,10 @@ class TodoList extends React.Component {
   }
 
   render() {
+    if (!this.props.todos) {
+      return <div>Loading...</div>
+    }
+
     if (this.props.error) {
       return <div>Error! {this.props.error.message}</div>
     }

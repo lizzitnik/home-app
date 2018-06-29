@@ -4,7 +4,6 @@ import {login} from './auth-actions'
 const {API_BASE_URL} = require('../config');
 
 export const registerUser = user => dispatch => {
-  debugger
     fetch(`${API_BASE_URL}/users`, {
         method: 'POST',
         headers: {
@@ -12,7 +11,10 @@ export const registerUser = user => dispatch => {
         },
         body: JSON.stringify(user)
     })
-        .then(user => dispatch(login(user.username, user.password)))
+        .then(res => res.json())
+        .then(u => {
+          dispatch(login(user.username, user.password))
+        })
         .catch(err => {
             const {reason, message, location} = err;
             if (reason === 'ValidationError') {

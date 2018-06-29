@@ -1,4 +1,6 @@
 .todo-list {
   list-style: none;
-  margin: 10px 10% 5px 10%;
+  margin: 10px 10% 0 10%;
+  max-height: 300px;
+  overflow: auto;
 }

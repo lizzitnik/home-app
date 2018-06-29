@@ -10,7 +10,7 @@ export const fetchTodosSuccess = todos => ({
 })
 
 export const ADD_TODO_SUCCESS = "ADD_TODO_SUCCESS"
-export const addTodoSuccess = value => ({
+export const addTodoSuccess = (value) => ({
   type: ADD_TODO_SUCCESS,
   todo: value
 })
@@ -30,7 +30,14 @@ export const removeTodoSuccess = todo => {
 }
 
 export const fetchTodos = () => (dispatch, getStore) => {
-  fetch(`${TODO_URL}`)
+  const { authToken } = getStore().auth
+  fetch(`${TODO_URL}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authToken}`
+    },
+  })
     .then(res => res.json())
     .then(todos => {
       dispatch(fetchTodosSuccess(todos))
@@ -42,6 +49,8 @@ export const fetchTodos = () => (dispatch, getStore) => {
 
 export const addTodo = value => (dispatch, getStore) => {
   const { authToken } = getStore().auth
+  const currentUser = getStore().auth.currentUser
+
   fetch(`${TODO_URL}`, {
     method: "POST",
     headers: {
@@ -55,6 +64,7 @@ export const addTodo = value => (dispatch, getStore) => {
     })
     .then(value => {
       dispatch(addTodoSuccess(value))
+      currentUser.todos.push(value.id)
     })
     .catch(error => console.error.bind(error))
 }

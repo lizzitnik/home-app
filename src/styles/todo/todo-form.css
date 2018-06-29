@@ -4,6 +4,7 @@
 
 .todo-title {
   margin: 0;
+  font-family: 'manifestoregular';
 }
 
 .todo-header form {
@@ -11,6 +12,7 @@
   grid-template-columns: 10fr 1fr;
   border: 1px solid lightgrey;
   border-radius: 4px;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .todo-input {
@@ -37,24 +39,15 @@
   display: none;
 }
 
-/* .todo-form input   {
-  width: 100%;
-  height: 100%;
-  height: 60px;
-  font-size: 30px;
-  padding: 10px;
+@font-face {
+    font-family: 'gloss_and_bloomregular';
+    src: url('../gloss_and_bloom-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
-
-.todo-header button {
-  border: none;
-  background: none;
-  font-size: 30px;
-  padding: 10px;
-  color: grey;
+@font-face {
+    font-family: 'manifestoregular';
+    src: url('../manifesto-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
-
-.todo-header button:hover {
-  background: lightgrey;
-  color: black;
-  cursor: pointer;
-} */

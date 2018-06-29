@@ -3,6 +3,7 @@ import React from "react"
 import "../../styles/todo/todo-item.css"
 
 export default function TodoItem(props) {
+
   return (
     <div className="todo-item">
       <label className="item">
@@ -14,8 +15,12 @@ export default function TodoItem(props) {
           onClick={props.toggleTodo}
           onChange={() => {}}
         />
-        <span />
-        {props.value}
+        <span
+          className='value'
+          style={{'textDecoration': props.completed ? 'line-through' : 'none'}}
+        >
+          {props.value}
+        </span>
       </label>
       <div className="todo-buttons">
         <button
@@ -24,9 +29,6 @@ export default function TodoItem(props) {
           onClick={props.removeTodo}
         >
           &mdash;
-        </button>
-        <button type="button" className="todo-edit">
-          Edit
         </button>
       </div>
     </div>

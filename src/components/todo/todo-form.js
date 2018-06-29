@@ -7,26 +7,16 @@ import {required, nonEmpty, isTrimmed} from '../../validators'
 import '../../styles/todo/todo-form.css'
 
 export class TodoForm extends React.Component {
-  clearInput() {
-    this.setState({value: ''})
-  }
-
   onSubmit(value) {
-    //const value = this.textInput.value.trim();
 
     this.props.dispatch(addTodo(value))
-    this.clearInput();
+    this.props.reset()
   }
-
-  // onChange = () => {
-  //   const value = this.textInput.value.trim()
-  //   this.setState({ value: value })
-  // }
 
   render() {
     return (
       <div className='todo-header'>
-        <h2 className='todo-title'>Todo List</h2>
+        <h2 className='todo-title'>Todo</h2>
         <form
           className='todo-form'
           onSubmit={this.props.handleSubmit(value =>
@@ -38,6 +28,7 @@ export class TodoForm extends React.Component {
             type='text'
             name='todo-input'
             id='todo-input'
+            placeholder='What needs doing?'
             validate={[required, nonEmpty, isTrimmed]}
           />
           <button

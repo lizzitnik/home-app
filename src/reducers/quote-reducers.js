@@ -6,7 +6,6 @@ import {
 
 const initialState = {
   quote: '',
-  author: '',
   loading: false,
   error: null
 }
@@ -20,7 +19,6 @@ export const quoteReducer = (state = initialState, action) => {
         error: null
       }
     case QUOTE_SUCCESS:
-    console.log(action.payload)
       return {
         quote: action.payload,
         loading: false

@@ -1,11 +1,12 @@
 .todo-item {
   display: grid;
-  grid-template-columns: 8fr 2fr;
+  grid-template-columns: 10fr 1fr;
   border: 1px solid lightgrey;
   border-radius: 4px;
   height: 60px;
   background-color: white;
   color: black;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .item {
@@ -15,21 +16,21 @@
 }
 
 .checkbox {
-  margin-left: 10px;
+  margin: 30px 20px 0 10px;
 }
 
-.todo-edit,
 .todo-delete {
   float: right;
   border: none;
   background-color: none;
-  font-size: 30px;
+  font-size: 20px;
   padding: 10px;
   color: grey;
   height: 100%;
+  width: 100%;
+  text-align: center;
 }
 
-.todo-edit:hover,
 .todo-delete:hover {
   background: lightgrey;
   color: black;
