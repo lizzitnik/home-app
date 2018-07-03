@@ -8,7 +8,6 @@ import '../../styles/todo/todo-form.css'
 
 export class TodoForm extends React.Component {
   onSubmit(value) {
-
     this.props.dispatch(addTodo(value))
     this.props.reset()
   }

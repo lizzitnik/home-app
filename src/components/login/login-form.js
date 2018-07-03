@@ -67,8 +67,7 @@ export class LoginForm extends React.Component {
         </form>
       </div>
       <div className='footer-li'>
-        <p>New Here?</p>
-        <Link to='/signup'>Signup!</Link>
+        <p>New Here? <Link to='/signup'>Signup!</Link></p>
       </div>
     </div>
     )

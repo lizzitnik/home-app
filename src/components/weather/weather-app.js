@@ -7,7 +7,7 @@ import { getLatLng } from "../../actions/weather-actions"
 
 import '../../styles/weather/weather-app.css'
 
-class Weather extends React.Component {
+export class Weather extends React.Component {
   constructor(props) {
     super(props)
     props.dispatch(getLatLng())
@@ -63,14 +63,13 @@ class Weather extends React.Component {
           weather={weather}
           handleTempColor={this.handleTempColor}
         />
-        <p className='footer'>*Daily temperatures are averages.</p>
+        <div className='footer'>
+          <p>*All temperatures are in fahrenheit</p>
+          <p>*Daily temperatures are averages.</p>
+        </div>
       </div>
     )
   }
 }
 
 export default connect(store => store)(Weather)
-
-// const props = store
-// props.updated = new Date()
-// return props

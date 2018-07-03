@@ -83,8 +83,7 @@ export class SignupForm extends React.Component {
               </form>
             </div>
             <div className='footer-su'>
-              <p>Have an Account?</p>
-              <Link to='/'>Login!</Link>
+              <p>Have an Account? <Link to='/'>Login!</Link></p>
             </div>
           </div>
         );

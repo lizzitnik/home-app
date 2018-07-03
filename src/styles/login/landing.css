@@ -2,10 +2,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 5px;
+  position: relative;
+  z-index: 99;
 }
 
 .form-container {
   margin: 50px;
+  margin-bottom: 0;
 }
 
 .form {
@@ -19,7 +22,7 @@
   position: relative;
   padding-top: 1.75em;
   border-top: 1px solid lightgrey;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .field {
@@ -65,13 +68,13 @@
 
 .btn-container button:hover {
   color: black;
-  background-color: lightgrey;
+  background-color: grey;
 }
 
 .btn-container {
   height: 50px;
   border: none;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9);
   border-top: 1px solid lightgrey;
   color: white;
   margin: 0 auto;
@@ -81,4 +84,30 @@
 .signup-page .form-error {
   float: right;
   color: red;
+}
+
+.footer-li,
+.footer-su {
+  margin: 0 0px 10px 30px;
+  color: white;
+}
+
+.footer-li p,
+.footer-su p {
+  margin: 0;
+}
+
+a {
+  color: lightblue;
+}
+
+@media only screen and (max-width: 768px) {
+  .landing {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .form h2 {
+    color: white;
+  }
 }

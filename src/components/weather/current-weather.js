@@ -33,7 +33,7 @@ export class Current extends React.Component {
         <div className='weather current-weather'>
           <div className='card current-weather-card'>
             <div className='day current-day'>Today</div>
-            <div className='current-temp' style={divStyle}>
+            <div className='current-temp circle' style={divStyle}>
               <span className='temp'>{today.feelslikeF}&deg;</span>
             </div>
             <div className='min-max current-min-max'>{today.minTempF}&deg; | {today.maxTempF}&deg;</div>

@@ -5,7 +5,7 @@ import { getQuote } from '../../actions/quote-actions'
 
 import "../../styles/quotes/quote.css"
 
-class Quote extends React.Component {
+export class Quote extends React.Component {
   componentDidMount() {
     this.props.dispatch(getQuote())
   }

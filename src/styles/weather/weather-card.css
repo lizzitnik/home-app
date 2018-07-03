@@ -19,7 +19,7 @@
 
 .current-temp {
   width: 100%;
-  border: 1px solid white;
+  border: 2px solid white;
   border-radius: 50%;
 }
 
@@ -33,7 +33,7 @@
 
 .daily-avg {
   width: 100%;
-  border: 1px solid white;
+  border: 2px solid white;
   border-radius: 50%;
 }
 
@@ -62,4 +62,26 @@
 
 .condition {
   font-size: 20px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .daily-weather {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-height: 260px;
+    overflow: auto;
+  }
+
+  .circle {
+    border: 1px solid white;
+  }
+
+  .card {
+    margin-right: 30%;
+    margin-left: 30%;
+  }
+
+  .daily-weather-card {
+    border-bottom: 1px solid lightgrey;
+  }
 }

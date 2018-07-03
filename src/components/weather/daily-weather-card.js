@@ -17,7 +17,7 @@ export default function DailyCard(props) {
   return (
     <div className='card daily-weather-card'>
       <div className='day daily-day'>{day}</div>
-      <div className='daily-avg' style={divStyle}>
+      <div className='daily-avg circle' style={divStyle}>
         <span className='avg'>{props.avgTempF}&deg;</span>
       </div>
       <div className='min-max daily-min-max'>{props.minTempF}&deg; | {props.maxTempF}&deg;</div>
