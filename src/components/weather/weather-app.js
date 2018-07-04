@@ -14,37 +14,36 @@ export class Weather extends React.Component {
   }
 
   handleTempColor = avgTemp => {
-    let color;
 
     if (avgTemp >= -40 && avgTemp <= 0) {
-      return color = '#33CCFF'
+      return '#33CCFF'
 
     } else if (avgTemp >= 1 && avgTemp <= 32) {
-      return color = '#0066FF'
+      return '#0066FF'
 
     } else if (avgTemp >= 33 && avgTemp <= 40) {
-      return color = '#000099'
+      return '#000099'
 
     } else if (avgTemp >= 41 && avgTemp <= 50) {
-      return color = '#339933'
+      return '#339933'
 
     } else if (avgTemp >=51  && avgTemp <= 60) {
-      return color = '#99FF00'
+      return '#99FF00'
 
     } else if (avgTemp >=61  && avgTemp <= 70) {
-      return color = '#FFFF00'
+      return '#FFFF00'
 
     } else if (avgTemp >=71  && avgTemp <= 85) {
-      return color = '#FF6600'
+      return '#FF6600'
 
     } else if (avgTemp >=86  && avgTemp <= 100) {
-      return color = '#CC0000'
+      return '#CC0000'
 
     } else if (avgTemp >=101  && avgTemp <= 120) {
-      return color = '#990000'
+      return '#990000'
 
     } else {
-      return color = 'white'
+      return 'white'
     }
   }
 
