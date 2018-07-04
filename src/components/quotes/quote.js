@@ -1,5 +1,4 @@
 import React from "react"
-import CurrentDate from '../date/date'
 import { connect } from 'react-redux'
 import { getQuote } from '../../actions/quote-actions'
 

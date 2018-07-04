@@ -7,8 +7,7 @@ export const loadWeather = () => {
   }
 }
 export const WEATHER_SUCCESS = "WEATHER_SUCCESS"
-export const weatherSuccess = payload => {
-  const forecasts = payload.periods
+export const weatherSuccess = forecasts => {
   return {
     type: WEATHER_SUCCESS,
     forecasts
@@ -34,7 +33,7 @@ export const getLocation = (lat, lng) => (dispatch, getStore) => {
   fetch(`${LOCATION_URL}`)
     .then(res => res.json())
     .then(data => {
-      dispatch(weatherSuccess(data.response[0]))
+      dispatch(weatherSuccess(data.response[0].periods))
     })
     .catch(error => {
       dispatch(weatherFailure(error))

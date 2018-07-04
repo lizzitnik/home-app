@@ -7,7 +7,7 @@ import TodoItem from './todo-item'
 
 import '../../styles/todo/todo-list.css'
 
-class TodoList extends React.Component {
+export class TodoList extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchTodos());
   }

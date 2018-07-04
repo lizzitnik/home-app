@@ -19,14 +19,3 @@
   margin: 0;
 
 }
-
-/* @media only screen and (max-width: 768px) {
-  .weather-app {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .form h2 {
-    color: white;
-  }
-} */

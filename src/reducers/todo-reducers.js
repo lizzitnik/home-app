@@ -24,7 +24,7 @@ export const todoReducer = (state = initialState, action) => {
     debugger
       return {
         ...state,
-        todos: [action.todo, ...state.todos]
+        todos: [...state.todos, action.todo]
       }
 
     case TOGGLE_TODO_SUCCESS:

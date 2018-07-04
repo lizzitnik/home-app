@@ -1,20 +1,19 @@
- language: node_js
- node_js: node
- cache:
-   directories:
-     - node_modules
- script:
-   - npm test
- env:
-   - CI=true
-
- before_deploy:
-   - npm install netlify-cli -g
-   - npm run build
-
- deploy:
-   provider: script
-   script: netlify deploy -t $NETLIFY_ACCESS_TOKEN -s $NETLIFY_SITE_ID -p ./build
-   skip_cleanup: true
-   on:
-     branch: master
+language: node_js
+node_js: node
+cache:
+  directories:
+  - node_modules
+script:
+- npm test
+env:
+- CI=true
+before_deploy:
+- npm install netlify-cli -g
+- npm run build
+deploy:
+  provider: heroku
+  api_key:
+    secure: XOTL9rKbpPD3/27E7kdnmI0uKQLlBkQX6qZpMVm3wr6h89eK0eqdQ8O37V2E4kwxjWdo6dQvsDPU04I/34F1Daa/O7KipyzwSQY0iFGNzDpVLs3XS79gRkm8Lumkb0GIxKwWCLyszQWZ5WfTzk+Z8uJI0E9eHV1ez1iuvOgIs4/sdb2AliHqMmX7X+1PZ+RRR3NtlZpT85c0dKsJlKpRJ4khW66JLrzKI7Mj189CIU3oDMhFnYlegYi3O6K89bT31kwOVvc063I6Hkw0sMfPtbGuf4h9tORS+MWdHnDkMQsyni9kn6986u8L9XH66Em/3aYWbq2rIaKpWxLBrycG5tZLE2OMJnphOSvnQco6M/PYHErWqdrgaoZ9Irap1j7KRtnf6GBWMGexS0xI1KQ6wpyqwD8YjjRD0rD3S4obzWSZ5/wWt3wpY0TbJzwZ+zRQ5DZQySYGPnV9vsv1sHaY4Zh/KbWz5HfGNR0066KH9+LszqHHN3uga6xNmwt8FHD8ySa+rcdcYeODmF1DqPeL5PHxJHbbtdu8OL9iSC5EzVId7nU/bbUm/3CjxxIHtpNnhq38ezJKEDin0fFZx7IHT0AQMJaz1yIjQY926FU0OtIBJofM/WezcLwgDFmi02Da24N9fh8z6jnSWAuvKKhnA0vS1TmCjEsTljjcjgu/wvI=
+  app: home-app11
+  on:
+    repo: lizzitnik/home-app

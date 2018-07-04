@@ -9,7 +9,7 @@ import { addTodo, toggleTodo, removeTodo } from "../../actions/todo-actions"
 import { getLatLng } from "../../actions/weather-actions"
 
 import "../../styles/todo/todo-app.css"
-class Todo extends React.Component {
+export class Todo extends React.Component {
   constructor(props) {
     super(props)
     props.dispatch(getLatLng())
