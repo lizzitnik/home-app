@@ -46,7 +46,6 @@ export class Weather extends React.Component {
     } else {
       return color = 'white'
     }
-    return color;
   }
 
   render() {
