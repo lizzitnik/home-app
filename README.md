@@ -1,8 +1,11 @@
 # Home
 
 To demo the app:
+
 username: mockuser
+
 password: password1234
+
 
 Live app: https://home-app1.herokuapp.com/
 
