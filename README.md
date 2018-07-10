@@ -12,7 +12,7 @@ Live app: https://home-app1.herokuapp.com/
 
 ![login](images/login.png )
 ![main](images/top.png )
-![todos](images/bottome.png )
+![todos](images/bottom.png )
 
 ## Summary
 
