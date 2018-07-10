@@ -8,6 +8,8 @@ password: password1234
 
 Live app: https://home-app1.herokuapp.com/
 
+Link to server repo: https://github.com/lizzitnik/home-server
+
 ## Screenshots
 
 ![login](images/login.png )
