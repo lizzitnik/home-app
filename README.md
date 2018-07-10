@@ -9,6 +9,11 @@ password: password1234
 Live app: https://home-app1.herokuapp.com/
 
 ## Screenshots
+
+![login](images/login.png )
+![main](images/top.png )
+![todos](images/bottome.png )
+
 ## Summary
 
 This is a simple productivity app that allows users to plan their day. After logging in, the user is welcomed and given a motivating quote of the day. Scrolling down, the user sees a 5-day forecast. Finally under the weather is a simple todo list where the user can add and delete items as they are completed.
