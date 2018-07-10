@@ -3,7 +3,6 @@
 To demo the app:
 
 username: mockuser
-
 password: password1234
 
 
